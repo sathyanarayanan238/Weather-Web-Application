@@ -1,0 +1,62 @@
+<html>
+<head>
+	<title>Weather Reporting</title>
+	<link rel="stylesheet" type="text/css" href="style.css"> 
+</head>
+<body>
+	<div class="card">
+		<div class="search">
+			<input type="text" placeholder="Enter The City" id="output" class="search-bar">
+			<br>
+			<button onclick="display('find')">Find</button>
+		</div>
+		<div class="weather">
+			<h2 id="city" class="city"></h2>
+			<h1 id="temp" class="temp"></h1>
+			<img src="images.png" class="icon">
+		<div id="description" class="description"></div>
+		<div id="humidity" class="humidity">Humidity:</div>
+		<div id="pressure" class="pressure">Pressure:</div>
+		<div id="wind" class="wind">Wind Speed:</div>
+	</div>
+	<script>
+		let API_KEY="4f6aca7f3637fd47e91a5eb2f837fbed",
+		 weatherdata =(city)=>{
+			
+			const URL ='https://api.openweathermap.org/data/2.5/weather';
+
+			const full_url = `${URL}?q=${city}&appid=${API_KEY}&units=metric`;
+			const weatherpromise =fetch(full_url);
+			//console.log(city)
+
+			return weatherpromise.then((response)=>{
+				return response.json()
+			})
+			}
+			function display(){
+
+				const city= document.getElementById("output").value;
+
+					weatherdata(city)
+					.then((response)=>{
+						showweatherdata(response)
+						console.log(response)
+					})	
+					.catch((err)=>{
+						console.log(err)
+					})
+
+			}
+			showweatherdata =(result)=>{
+				document.getElementById('city').innerText ="Weather in" + " " +result.name;
+				document.getElementById('description').innerText =result.weather[0].main;
+				document.getElementById('temp').innerText = result.main.temp + "ºC";
+				document.getElementById('humidity').innerText ="Humidity: " + result.main.humidity + "%";
+				document.getElementById('pressure').innerText ="Pressure:" + result.main.pressure;
+				document.getElementById('wind').innerText ="Wind Speed: " + result.wind.speed + "km/h"; 
+			}
+	</script>
+	
+</body>
+</html>
+

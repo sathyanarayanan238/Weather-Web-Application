@@ -1,0 +1,65 @@
+body{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height:100vh;
+	margin:0;
+	color:white;
+	font-family:fantasy;
+	background-image:url("1540049.jpg");
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+	background-size: 1366px 600px;
+}
+.card{
+	background-color:black;
+	opacity:0.7;
+	padding:2em;
+	border-radius: 20px;
+	margin:1em;
+	backface-visibility: hidden;
+}
+button{
+	margin-left: 0.1em;
+	margin-top: 1em;
+	width: 7em;
+	border-radius: 10px;
+	background-color:black;
+	cursor: pointer;
+	border-color: thick;
+	color:white	;
+}
+input{
+	cursor: pointer;
+	border-width:3px;
+	border-radius: 10px;
+	border-color:thick;
+	width: 20em;
+	height:30px;
+}
+.temp{
+	color:red;
+}
+.description{
+	color:skyblue;
+	font-size:2em;
+}
+.humidity{
+	color:pink;
+	font-size:30px;
+}
+.wind{
+	color:orange;
+	font-size:30px;
+}
+.description{
+	text-transform: capitalize;
+}
+.icon{
+	height:40px;
+	background-color: red;
+}
+.pressure{
+	color:violet;
+	font-size:30px;
+}
